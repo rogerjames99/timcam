@@ -14,8 +14,8 @@ const char* ssid = "ELDRADO";
 const char* password = "amazon123";
 
 // Initialize Telegram BOT
-String BOTtoken = "5846867606:AAGS9FTjwwGbcgrJRe8K0G83Ibnp0nEvFu0";
-String CHAT_ID = "5379039379";
+String BOTtoken = "";
+String CHAT_ID = "";
 
 bool sendPhoto = false;
 
