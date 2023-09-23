@@ -1,5 +1,8 @@
 #include "esp_camera.h"
+#include <DFRobot_AXP313A.h>
 #include <WiFi.h>
+
+DFRobot_AXP313A axp;
 
 #define CAMERA_MODEL_DFRobot_FireBeetle2_ESP32S3 // Has PSRAM
 
@@ -26,8 +29,8 @@
 // ===========================
 // Enter your WiFi credentials
 // ===========================
-const char* ssid = "peglegpete";
-const char* password = "nowisthetime";
+const char* ssid = "notrogersphone";
+const char* password = "virginmedia";
 
 void startCameraServer();
 void setupLedFlash(int pin);
@@ -91,6 +94,12 @@ void setup() {
     #endif
 
     // camera init
+    while (axp.begin() != 0) {
+        log_d("init error\n");
+        delay(1000);
+    }
+    axp.enableCameraPower(axp.eOV2640);
+    log_d("Calling esp_camera_init\n");
     esp_err_t err = esp_camera_init(&config);
     if (err != ESP_OK) {
         log_d("Camera init failed with error 0x%x", err);
